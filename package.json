@@ -1,6 +1,6 @@
 {
   "name": "take-oath",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Promisify mostly anything",
   "main": "index.js",
   "scripts": {
