@@ -1,7 +1,7 @@
 const functions = require('lodash.functionsin')
 
-function promisifyFunction(fn, context) {
-  return (...args) => new Promise((resolve, reject) => {
+const promisifyFunction = (fn, context) =>
+  (...args) => new Promise((resolve, reject) => {
     fn.call(context, ...args, (err, ...result) => {
       if (err) {
         reject(err)
@@ -12,16 +12,15 @@ function promisifyFunction(fn, context) {
       }
     })
   })
-}
 
-function promisifyObject(obj) {
-  return Object.assign({}, obj, functions(obj).reduce((acc, fnName) => {
+const promisifyObject = obj => (
+  Object.assign({}, obj, functions(obj).reduce((acc, fnName) => {
     acc[fnName] = promisifyFunction(obj[fnName], obj)
     return acc
   }, {}))
-}
+)
 
-function promisify(fnOrStringOrObject, context = null) {
+const promisify = (fnOrStringOrObject, context = null) => {
   const type = typeof fnOrStringOrObject
   switch (type) {
     case 'function': return promisifyFunction(fnOrStringOrObject, context)
