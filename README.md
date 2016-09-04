@@ -20,7 +20,7 @@ npm i take-oath
 const takeOath = require('take-oath')
 const {readdir} = takeOath('fs')
 
-readdir('/path/to/directory').then(files => {})
+readdir('/path/to/directory').then(console.log)
 ```
 
 The module can be a function or an object.
@@ -31,7 +31,7 @@ The module can be a function or an object.
 const takeOath = require('take-oath')
 
 const inc = (number, callback) => {
-  callback(number + 1)
+  callback(null, number + 1)
 }
 
 takeOath(inc)(2).then(console.log) // 3
@@ -44,8 +44,8 @@ const takeOath = require('take-oath')
 
 const obj = {number: 1}
 
-const inc = (callback) => {
-  callback(this.number + 1)
+const inc = function (callback) {
+  callback(null, this.number + 1)
 }
 
 takeOath(inc, obj)().then(console.log) // 2
@@ -57,9 +57,10 @@ takeOath(inc, obj)().then(console.log) // 2
 const takeOath = require('take-oath')
 
 const obj = {
-  fn1: cb => cb('foo'),
-  fn2: cb => cb('bar')
+  fn1: cb => cb(null, 'foo'),
+  fn2: cb => cb(new Error('bar'))
 }
 
 takeOath(obj).fn1().then(console.log) // foo
+takeOath(obj).fn2().catch(console.error) // Error: bar
 ```
