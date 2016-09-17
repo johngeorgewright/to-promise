@@ -29,6 +29,19 @@ suite('functions', () => {
     const inc = function (callback) { callback(null, this.number + 1) }
     return promisify(inc, obj)().should.eventually.equal(2)
   })
+
+  test('a callback with arguments.length >= 2', () => {
+    const getName = (firstName, surname, callback) =>
+      callback(null, firstName, surname)
+    return promisify(getName)('Foo', 'Bar')
+    .should.eventually.eql(['Foo', 'Bar'])
+  })
+
+  test('a function that errors', () => {
+    const error = new Error('Foo')
+    const foo = callback => callback(error)
+    return promisify(foo)().should.eventually.be.rejectedWith(error)
+  })
 })
 
 suite('objects', () => {
@@ -54,4 +67,8 @@ suite('error handling', () => {
     promisify(() => { throw new Error('I should not be caught') })()
     .should.eventually.be.rejectedWith('I should not be caught')
   ))
+
+  test('can only promisify certain types', () => {
+    (() => promisify(1000)).should.throw()
+  })
 })

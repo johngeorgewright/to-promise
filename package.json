@@ -1,12 +1,16 @@
 {
   "name": "take-oath",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Promisify mostly anything",
   "main": "index.js",
   "scripts": {
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --check-leaks --ui tdd test/unit.js && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "cover": "istanbul cover ./node_modules/.bin/_mocha -- --check-leaks --ui tdd test/unit.js",
     "lint": "eslint .",
     "unit": "mocha --check-leaks --ui tdd test/unit.js",
-    "test": "npm run lint && npm run unit"
+    "test": "npm run lint && npm run unit",
+    "test-w": "npm run unit -- --watch --growl",
+    "travis": "npm run lint && npm run coveralls"
   },
   "keywords": [
     "promise",
@@ -24,10 +28,13 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
+    "coveralls": "^2.11.13",
     "eslint": "^3.4.0",
     "eslint-config-standard": "^6.0.0",
     "eslint-plugin-promise": "^2.0.1",
     "eslint-plugin-standard": "^2.0.0",
-    "mocha": "^3.0.2"
+    "istanbul": "^0.4.5",
+    "mocha": "^3.0.2",
+    "mocha-lcov-reporter": "^1.2.0"
   }
 }
