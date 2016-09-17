@@ -2,7 +2,7 @@
 
 [![Coverage Status](https://img.shields.io/coveralls/johngeorgewright/take-oath/master.svg?style=flat-square)](https://coveralls.io/github/johngeorgewright/take-oath?branch=master)
 [![Build Status](https://img.shields.io/travis/johngeorgewright/take-oath/master.svg?style=flat-square)](https://travis-ci.org/johngeorgewright/take-oath)
-[![NPM Version](https://img.shields.io/npm/v/hot-press.svg?style=flat-square)](https://www.npmjs.com/package/take-oath)
+[![NPM Version](https://img.shields.io/npm/v/take-oath.svg?style=flat-square)](https://www.npmjs.com/package/take-oath)
 [![Dependencies](https://img.shields.io/gemnasium/johngeorgewright/take-oath.svg?style=flat-square)](https://gemnasium.com/github.com/johngeorgewright/take-oath)
 [![License](https://img.shields.io/npm/l/take-oath.svg?style=flat-square)](https://github.com/johngeorgewright/take-oath/blob/master/LICENSE)
 
