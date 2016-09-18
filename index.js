@@ -13,11 +13,12 @@ const promisifyFunction = (fn, context) =>
     })
   })
 
-const promisifyObject = obj => (
-  Object.assign({}, obj, functions(obj).reduce((acc, fnName) => {
+const promisifyObject = obj => functions(obj).reduce(
+  (acc, fnName) => {
     acc[fnName] = promisifyFunction(obj[fnName], obj)
     return acc
-  }, {}))
+  },
+  Object.assign({}, obj)
 )
 
 const promisify = (fnOrStringOrObject, context = null) => {
