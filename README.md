@@ -59,6 +59,19 @@ const inc = function (callback) {
 takeOath(inc, obj)().then(console.log) // 2
 ```
 
+### Promisify an array of functions
+
+```javascript
+const promisify = require('take-oath')
+
+const [fn1, fn2] = promisify([
+  cb => cb(null, 'foo'),
+  cb => cb(null, 'bar')
+])
+
+fn1().then(console.log) // foo
+```
+
 ### Promisify all functions in an Object
 
 ```javascript
