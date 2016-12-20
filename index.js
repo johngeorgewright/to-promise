@@ -35,12 +35,16 @@ const promisifyModule = path => {
   return promisify(mod)
 }
 
-const promisify = (fnOrStringOrObject, context = null) => {
-  const type = typeof fnOrStringOrObject
+const promisifyArray = arr =>
+  arr.map(fn => promisifyFunction(fn, null))
+
+const promisify = (subject, context = null) => {
+  if (Array.isArray(subject)) return promisifyArray(subject)
+  const type = typeof subject
   switch (type) {
-    case 'function': return promisifyFunction(fnOrStringOrObject, context)
-    case 'object': return promisifyObject(fnOrStringOrObject)
-    case 'string': return promisifyModule(fnOrStringOrObject)
+    case 'function': return promisifyFunction(subject, context)
+    case 'object': return promisifyObject(subject)
+    case 'string': return promisifyModule(subject)
     default: throw new Error(`Don't know how to promisify a "${type}"`)
   }
 }
