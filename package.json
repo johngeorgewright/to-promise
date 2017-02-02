@@ -7,7 +7,7 @@
     "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --check-leaks --ui tdd test/unit.js && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
     "cover": "istanbul cover ./node_modules/.bin/_mocha -- --check-leaks --ui tdd test/unit.js",
     "lint": "eslint .",
-    "unit": "mocha --check-leaks --ui tdd test/unit.js",
+    "unit": "mocha --check-leaks --ui tdd test/unit",
     "test": "npm run lint && npm run unit",
     "test-w": "npm run unit -- --watch --growl",
     "travis": "npm run lint && npm run coveralls"
