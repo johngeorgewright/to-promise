@@ -3,11 +3,14 @@
   "version": "1.2.0",
   "description": "Promisify mostly anything",
   "main": "index.js",
+  "config": {
+    "test_path": "test/unit"
+  },
   "scripts": {
-    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --check-leaks --ui tdd test/unit.js && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
-    "cover": "istanbul cover ./node_modules/.bin/_mocha -- --check-leaks --ui tdd test/unit.js",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --check-leaks --ui tdd $npm_package_config_test_path && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "cover": "istanbul cover ./node_modules/.bin/_mocha -- --check-leaks --ui tdd $npm_package_config_test_path",
     "lint": "eslint .",
-    "unit": "mocha --check-leaks --ui tdd test/unit",
+    "unit": "mocha --check-leaks --ui tdd $npm_package_config_test_path",
     "test": "npm run lint && npm run unit",
     "test-w": "npm run unit -- --watch --growl",
     "travis": "npm run lint && npm run coveralls"
