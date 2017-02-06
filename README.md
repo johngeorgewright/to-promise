@@ -1,5 +1,7 @@
 # take-oath
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/johngeorgewright/take-oath.svg)](https://greenkeeper.io/)
+
 [![Coverage Status](https://img.shields.io/coveralls/johngeorgewright/take-oath/master.svg?style=flat-square)](https://coveralls.io/github/johngeorgewright/take-oath?branch=master)
 [![Build Status](https://img.shields.io/travis/johngeorgewright/take-oath/master.svg?style=flat-square)](https://travis-ci.org/johngeorgewright/take-oath)
 [![NPM Version](https://img.shields.io/npm/v/take-oath.svg?style=flat-square)](https://www.npmjs.com/package/take-oath)
