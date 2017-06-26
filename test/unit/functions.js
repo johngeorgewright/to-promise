@@ -20,7 +20,7 @@ suite('functions', () => {
     const getName = (firstName, surname, callback) =>
       callback(null, firstName, surname)
     return promisify(getName)('Foo', 'Bar')
-    .should.eventually.eql(['Foo', 'Bar'])
+      .should.eventually.eql(['Foo', 'Bar'])
   })
 
   test('a function that errors', () => {

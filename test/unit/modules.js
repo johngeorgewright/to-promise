@@ -12,7 +12,7 @@ suite('modules', () => {
 
   test('a promised function', () => (
     fsPromised.readdir(path.resolve(__dirname, '..', 'fixtures', 'promised-function'))
-    .should.eventually.eql(['1.txt', '2.txt', '3.txt'])
+      .should.eventually.eql(['1.txt', '2.txt', '3.txt'])
   ))
 
   test('that local modules are relative to the parent', () => (
