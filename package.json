@@ -4,7 +4,10 @@
   "description": "Promisify mostly anything",
   "main": "index.js",
   "config": {
-    "test_path": "test/unit"
+    "test_path": "test/unit",
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "scripts": {
     "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --check-leaks --ui tdd $npm_package_config_test_path && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
@@ -31,7 +34,9 @@
   "devDependencies": {
     "chai": "^4.0.1",
     "chai-as-promised": "^7.0.0",
+    "commitizen": "^2.9.6",
     "coveralls": "^2.11.13",
+    "cz-conventional-changelog": "^2.0.0",
     "eslint": "^4.1.1",
     "eslint-config-standard": "^10.0.0",
     "eslint-plugin-import": "^2.2.0",
@@ -40,7 +45,8 @@
     "eslint-plugin-standard": "^3.0.1",
     "istanbul": "^0.4.5",
     "mocha": "^3.0.2",
-    "mocha-lcov-reporter": "^1.2.0"
+    "mocha-lcov-reporter": "^1.2.0",
+    "semantic-release": "^6.3.6"
   },
   "engines": {
     "node": ">=6",
