@@ -7,7 +7,7 @@ chai.should()
 suite('error handling', () => {
   test('errors are rejected', () => (
     promisify(() => { throw new Error('I should not be caught') })()
-    .should.eventually.be.rejectedWith('I should not be caught')
+      .should.eventually.be.rejectedWith('I should not be caught')
   ))
 
   test('can only promisify certain types', () => {
