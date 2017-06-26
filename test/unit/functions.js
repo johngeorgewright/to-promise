@@ -1,5 +1,6 @@
 const chai = require('chai')
 const promisify = require('../../')
+const util = require('util')
 
 chai.use(require('chai-as-promised'))
 chai.should()
@@ -27,5 +28,22 @@ suite('functions', () => {
     const error = new Error('Foo')
     const foo = callback => callback(error)
     return promisify(foo)().should.eventually.be.rejectedWith(error)
+  })
+
+  test('overriding behaviour', () => {
+    let inc = (number, callback) => callback(number + 1)
+    inc = promisify(inc, null, {
+      promisifyFunction: fn => number =>
+        new Promise(resolve => resolve(number + 1))
+    })
+    return inc(2).should.eventually.equal(3)
+  })
+
+  test('using the custom symbol', () => {
+    let inc = (number, callback) => callback(number + 1)
+    inc[util.promisify.custom] = number =>
+      new Promise(resolve => resolve(number + 1))
+    inc = promisify(inc)
+    return inc(2).should.eventually.equal(3)
   })
 })

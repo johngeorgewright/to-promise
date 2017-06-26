@@ -89,6 +89,39 @@ takeOath(obj).fn2().catch(console.error) // Error: bar
 **Note**: `take-oath` is immutable in nature and will not modify the original
 object.
 
+### Custom promisify function
+
+#### Node < 8
+
+```javascript
+const promisify = require('take-oath')
+
+const inc = promisify((number, callback) => {
+  callback(number + 1)
+}, null, {
+  promisifyFunction: () => number =>
+    new Promise(resolve => resolve(number + 1))
+})
+
+promisify(inc)(2).then(console.log) // 3
+```
+
+#### Node >= 8
+
+```javascript
+const promisify = require('take-oath')
+const util = require('util')
+
+const inc = (number, callback) => {
+  callback(null, number + 1)
+}
+
+inc[util.promisify.custom] = number =>
+  new Promise(resolve => resolve(number + 1))
+
+promisify(inc)(2).then(console.log) // 3
+```
+
 ## Cookbook
 
 ### Separating callback and promise methods
