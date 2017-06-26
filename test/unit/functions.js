@@ -31,6 +31,7 @@ suite('functions', () => {
   })
 
   test('overriding behaviour', () => {
+    // eslint-disable-next-line standard/no-callback-literal
     let inc = (number, callback) => callback(number + 1)
     inc = promisify(inc, null, {
       promisifyFunction: fn => number =>
@@ -40,6 +41,7 @@ suite('functions', () => {
   })
 
   test('using the custom symbol', () => {
+    // eslint-disable-next-line standard/no-callback-literal
     let inc = (number, callback) => callback(number + 1)
     inc[util.promisify.custom] = number =>
       new Promise(resolve => resolve(number + 1))
