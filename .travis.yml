@@ -7,5 +7,11 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+before_install:
+  - npm install -g greenkeeper-lockfile@1
+before_script:
+  - greenkeeper-lockfile-update
 script:
   - npm run travis
+after_script:
+  - greenkeeper-lockfile-upload
