@@ -103,7 +103,7 @@ const inc = promisify((number, callback) => {
     new Promise(resolve => resolve(number + 1))
 })
 
-promisify(inc)(2).then(console.log) // 3
+inc(2).then(console.log) // 3
 ```
 
 #### Node >= 8

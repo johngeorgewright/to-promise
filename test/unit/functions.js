@@ -12,7 +12,7 @@ suite('functions', () => {
   })
 
   test('bound functions', () => {
-    const obj = {number: 1}
+    const obj = { number: 1 }
     const inc = function (callback) { callback(null, this.number + 1) }
     return promisify(inc, obj)().should.eventually.equal(2)
   })
