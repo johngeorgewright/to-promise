@@ -7,7 +7,7 @@ const isLocalModule = path => path.startsWith('.') || pathHelper.isAbsolute(path
 
 class PromisifyBehaviour {
   promisifyFunction (fn, context) {
-    if (customPromisifyFunction && fn.hasOwnProperty(customPromisifyFunction)) {
+    if (customPromisifyFunction && Object.prototype.hasOwnProperty.call(fn, customPromisifyFunction)) {
       return fn[customPromisifyFunction]
     }
     return (...args) => new Promise((resolve, reject) => {
