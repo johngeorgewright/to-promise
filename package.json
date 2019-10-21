@@ -46,7 +46,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^6.1.4",
     "mocha-lcov-reporter": "^1.2.0",
-    "semantic-release": "^15.13.14"
+    "semantic-release": "^15.13.27"
   },
   "engines": {
     "node": ">=6",
